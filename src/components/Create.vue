@@ -1,0 +1,35 @@
+<template>
+  <div>
+    <input v-model="writer" placeholder="writer"/>
+    <input v-model="title" placeholder="title"/>
+    <textarea v-model="content" placeholder="content"/>
+    <button @click="write">write</button>
+  </div>
+</template>
+<script>
+import data from '@/data'
+
+export default {
+  name : 'Create',
+  data() {
+    return {
+      data : data,
+      writer : "",
+      title : "",
+      content : ""
+    }
+  },
+  methods : {
+    write() {
+      this.data.push({
+        writer : this.writer,
+        title : this.title,
+        content : this.content,
+      })
+      this.$router.push({
+        path : '/'
+      })
+    }
+  }
+}
+</script>
